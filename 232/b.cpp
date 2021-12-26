@@ -12,19 +12,22 @@ using namespace std;
 typedef long long ll;
 const int MOD = 1000000007;
 const long long INF = 1LL << 60;
+#define debag1v(h) for(auto i:h)out(i);
+#define debag2v(h) rep(i,h.size()){for(auto c:h.at(i)){cout<<c;}out(' ');};
 //for(int tmp =0;tmp<(1<<ex.length()-1);tmp++){bitset<num>b(tmp)}for(int i=0;i<ex.length()-1;i++){if(b.test(i)){}
 int main(){
 	string s,t;
 	cin>>s>>t;
-	vector<int>s_t;
+	vector<int>a,b;
 	rep(i,s.length()){
-		s_t.push_back(abs(ctoi(s.at(i))-ctoi(t.at(i))));
+		a.push_back(int(ctoi(s.at(i))));
+		b.push_back(int(ctoi(t.at(i))));
 	}
+	int base = (b.at(0)-a.at(0)+26)%26;
 	bool ans = true;
-	int base = s_t.at(0);
-	for(int i=1;i<s_t.size();i++){
-		if(base!=s_t.at(i)||base!=s_t.at(i)+26){
-			ans = false;
+	rep(i,a.size()){
+		if((b.at(i)-a.at(i)+26)%26!=base){
+				ans = false;
 		}
 	}
 	if(ans){
@@ -33,3 +36,5 @@ int main(){
 		out("No");
 	}
 }
+//sとtの文字列をアスキーコードに変換してそれをintにする
+//どれくらいずれているかで、49=>52d 74=>51c => -26してプラスするのとそのまま足すの判定をしてあげる
