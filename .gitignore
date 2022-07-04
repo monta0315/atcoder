@@ -1,3 +1,5 @@
 a.out
 .mypy_cache
 /atcoder/
+.DS_Store
+/tenkei/.DS_Store
